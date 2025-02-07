@@ -1,0 +1,62 @@
+@use "../../styles/base/variables.scss" as *;
+
+.home_main_page_createTweet {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  align-items: flex-end;
+  border-bottom: 1px solid $border-color;
+
+  &_field {
+    width: calc(100% - 52px);
+    height: 70px;
+    resize: none;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 5px;
+    color: #fff;
+    font-weight: 400;
+    font-size: 19px;
+    border-bottom: 1px solid transparent;
+    @include setTr(border-bottom);
+
+    &:focus {
+      border-bottom: 1px solid $border-color;
+    }
+  }
+  &_main {
+    display: flex;
+    width: 100%;
+    gap: 12px;
+
+    &_user {
+      &_icon {
+        border-radius: 40px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  &_button {
+    margin-top: 18px;
+    border-radius: 53px;
+    padding: 10px 31px;
+    border: none;
+    background-color: $blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    cursor: pointer;
+    @include setTr(background-color);
+
+    &:hover {
+      background-color: $blue-hov;
+    }
+  }
+}

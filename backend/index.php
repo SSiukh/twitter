@@ -1,10 +1,17 @@
 <?php
-// Перевіряємо, чи є файл у папці dist
-$requested_file = __DIR__ . '/dist' . $_SERVER['REQUEST_URI'];
-if (file_exists($requested_file) && is_file($requested_file)) {
-    // Якщо файл існує, обслуговуємо його
-    return false;
-}
 
-// В іншому випадку — завантажуємо index.html
-require __DIR__ . '/dist/index.html';
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+header('Access-Control-Allow-Methods: POST, OPTIONS, GET');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
+require "./vendor/autoload.php";
+
+use Controllers\ApiHandler;
+use Classes\Database;
+
+
+$db = new Database();
+$api = new ApiHandler($db);
+
+$api->handleRequest();

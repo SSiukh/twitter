@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF_8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="../assets/user.PNG" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="home">
+        <header class="home_header">
+          <div class="home_header_main">
+            <a href="/home.html" class="home_header_main_logo">
+              <svg width="26" height="26" class="home_header_main_logo_icon">
+                <use href="../assets/icons.svg#logo"></use>
+              </svg>
+            </a>
+            <nav class="home_header_main_nav">
+              <ul class="home_header_main_nav_list">
+                <li class="home_header_main_nav_list_item">
+                  <a
+                    href="/home.html"
+                    class="home_header_main_nav_list_item_link"
+                  >
+                    <svg
+                      width="26"
+                      height="26"
+                      class="home_header_main_nav_list_item_link_icon"
+                    >
+                      <use href="../assets/icons.svg#home"></use>
+                    </svg>
+                    Home
+                  </a>
+                </li>
+                <li class="home_header_main_nav_list_item">
+                  <a
+                    data-type="profile"
+                    class="home_header_main_nav_list_item_link"
+                  >
+                    <svg
+                      width="26"
+                      height="26"
+                      class="home_header_main_nav_list_item_link_icon"
+                    >
+                      <use href="../assets/icons.svg#profile"></use>
+                    </svg>
+                    Profile
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <button class="home_header_main_button">Tweet</button>
+          </div>
+          <div class="home_header_profile">
+            <div class="home_header_profile_main">
+              <img
+                src="../assets/user.PNG"
+                class="home_header_profile_main_icon"
+                alt="user icon"
+              />
+              <p class="home_header_profile_main_username"></p>
+            </div>
+            <button class="home_header_profile_button">
+              <svg
+                width="16"
+                height="16"
+                class="home_header_profile_button_icon"
+              >
+                <use href="../assets/icons.svg#open"></use>
+              </svg>
+            </button>
+
+            <div class="profile visually-hidden">
+              <a href="/" class="profile_button">Exit profile</a>
+              <div class="profile_triangle"></div>
+            </div>
+          </div>
+        </header>
+        <main class="home_main">
+          <h1 class="visually-hidden">tweets</h1>
+          <div class="home_main_page">
+            <div class="home_main_page_title">
+              <button class="home_main_page_title_button">
+                <span class="home_main_page_title_button_text">For you</span>
+              </button>
+              <button class="home_main_page_title_button">
+                <span class="home_main_page_title_button_text">
+                  Subscription
+                </span>
+              </button>
+            </div>
+            <div class="home_main_page_scroll">
+              <div class="home_main_page_createTweet">
+                <div class="home_main_page_createTweet_main">
+                  <a class="home_main_page_createTweet_main_user">
+                    <img
+                      src="../assets/user.PNG"
+                      class="home_main_page_createTweet_main_user_icon"
+                    />
+                  </a>
+                  <textarea
+                    class="home_main_page_createTweet_field"
+                    name="createTweet"
+                    placeholder="What happens?!"
+                  ></textarea>
+                </div>
+                <button class="home_main_page_createTweet_button">Tweet</button>
+              </div>
+              <div class="home_main_page_tweets">
+                <ul class="home_main_page_tweets_list"></ul>
+              </div>
+            </div>
+          </div>
+          <div class="home_main_side">
+            <div class="home_main_side_search">
+              <svg width="16" height="16" class="home_main_side_search_icon">
+                <use href="../assets/icons.svg#search"></use>
+              </svg>
+              <input
+                name="search"
+                type="text"
+                class="home_main_side_search_input"
+                placeholder="Keyword or hashtag"
+              />
+            </div>
+
+            <!--overflow auto -->
+            <div class="home_main_side_tags">
+              <h2 class="home_main_side_tags_title"># Popular tags</h2>
+              <ul class="home_main_side_tags_list"></ul>
+            </div>
+            <div class="home_main_side_profiles">
+              <h2 class="home_main_side_profiles_title">
+                # Recomended profiles
+              </h2>
+              <ul class="home_main_side_profiles_list"></ul>
+            </div>
+          </div>
+        </main>
+        <div class="tweet visually-hidden">
+          <div class="tweet_container">
+            <button class="tweet-close-button">
+              <svg class="tweet-close-button_icon" width="16" height="16">
+                <use href="../assets/icons.svg#quit"></use>
+              </svg>
+            </button>
+            <div class="tweet_container_createTweet">
+              <div class="tweet_container_createTweet_main">
+                <img
+                  src="../assets/user.PNG"
+                  class="tweet_container_createTweet_main_icon"
+                />
+                <textarea
+                  class="tweet_container_createTweet_field"
+                  name="createTweet"
+                  placeholder="What happens?!"
+                ></textarea>
+              </div>
+              <button class="tweet_container_createTweet_button">Tweet</button>
+            </div>
+          </div>
+        </div>
+        <div class="edit visually-hidden">
+          <div class="edit_container">
+            <button class="edit-close-button">
+              <svg class="edit-close-button_icon" width="16" height="16">
+                <use href="../assets/icons.svg#quit"></use>
+              </svg>
+            </button>
+            <div class="edit_container_createTweet">
+              <div class="edit_container_createTweet_main">
+                <img
+                  src="../assets/user.PNG"
+                  class="edit_container_createTweet_main_icon"
+                />
+                <textarea
+                  class="edit_container_createTweet_field"
+                  name="createTweet"
+                  placeholder="What happens?!"
+                ></textarea>
+              </div>
+              <button class="edit_container_createTweet_button">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

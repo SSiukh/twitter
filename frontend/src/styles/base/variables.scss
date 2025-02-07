@@ -1,0 +1,13 @@
+$black: #000;
+$blue: #1da1f2;
+$blue-hov: #197ebc;
+$border-color: #2f3336;
+$gray: #8899a6;
+$dark-gray: #253343;
+$white: #fff;
+$white-hov: #e8e8e8;
+$backround-color: #38444d;
+$back-hov: rgba(255, 255, 255, 0.1);
+@mixin setTr($value) {
+  transition: $value 250ms ease-in-out;
+}

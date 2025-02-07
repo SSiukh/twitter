@@ -3,6 +3,8 @@ dist
 dist-ssr
 *.local
 
+.htaccess
 .env
 .env.local
 .env.*.local
+/vendor/

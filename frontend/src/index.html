@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+    />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <div class="container">
+      <main class="auth-main">
+        <svg class="auth-main_icon" width="480" height="410">
+          <use href="./assets/icons.svg#logo"></use>
+        </svg>
+        <div class="auth-main_content">
+          <h1 class="auth-main_content_title">Have a nice day</h1>
+          <h2 class="auth-main_content_subtitle">Join today.</h2>
+          <div class="auth-main_content_buttons">
+            <button class="auth-main_content_buttons_login">Sign in</button>
+            <span class="auth-main_content_buttons_label">or</span>
+            <button class="auth-main_content_buttons_signup">
+              Create account
+            </button>
+          </div>
+        </div>
+
+        <div class="login visually-hidden">
+          <div class="login-container">
+            <div class="login-container_header">
+              <svg class="login-container_header_logo" width="26" height="26">
+                <use href="./assets/icons.svg#logo"></use>
+              </svg>
+              <button class="login-close-button">
+                <svg class="login-close-button_icon" width="16" height="16">
+                  <use href="./assets/icons.svg#quit"></use>
+                </svg>
+              </button>
+            </div>
+
+            <div class="login-container_content">
+              <h2 class="login-container_content_title">Sign in to twitter</h2>
+              <form class="login-container_content_form">
+                <input
+                  class="login-container_content_form_input"
+                  name="username"
+                  type="text"
+                  placeholder="email or username"
+                />
+                <span data-login="username" class="field-err"></span>
+                <input
+                  class="login-container_content_form_input"
+                  name="password"
+                  type="password"
+                  placeholder="password"
+                />
+                <span data-login="password" class="field-err"></span>
+                <button class="login-container_content_form_button">
+                  Sign in
+                </button>
+              </form>
+              <button class="login-container_content_forgot">
+                Forgot password?
+              </button>
+              <p class="login-container_content_signup">
+                Don't have an account?
+                <button data-target="signup" class="login-transit-button">
+                  Sign up
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="signup visually-hidden">
+          <div class="signup-container">
+            <div class="signup-container_header">
+              <svg class="signup-container_header_logo" width="26" height="26">
+                <use href="./assets/icons.svg#logo"></use>
+              </svg>
+              <button class="signup-close-button">
+                <svg class="signup-close-button_icon" width="16" height="16">
+                  <use href="./assets/icons.svg#quit"></use>
+                </svg>
+              </button>
+            </div>
+
+            <div class="signup-container_content">
+              <h2 class="signup-container_content_title">Sign up to twitter</h2>
+              <form class="signup-container_content_form">
+                <input
+                  class="signup-container_content_form_input"
+                  name="username"
+                  type="text"
+                  placeholder="username"
+                />
+                <span data-signup="username" class="field-err"></span>
+                <input
+                  class="signup-container_content_form_input"
+                  name="email"
+                  type="email"
+                  placeholder="email"
+                />
+                <span data-signup="email" class="field-err"></span>
+                <input
+                  class="signup-container_content_form_input"
+                  name="password"
+                  type="password"
+                  placeholder="password"
+                />
+                <span data-signup="password" class="field-err"></span>
+                <input
+                  class="signup-container_content_form_input"
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="confirm password"
+                />
+                <span data-signup="confirmPassword" class="field-err"></span>
+                <button class="signup-container_content_form_button">
+                  Sign up
+                </button>
+              </form>
+              <p class="signup-container_content_login">
+                Already have an account?
+                <button data-target="login" class="signup-transit-button">
+                  Sign in
+                </button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+  </body>
+</html>

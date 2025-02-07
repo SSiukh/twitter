@@ -1,18 +1,20 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const historyApiFallback = require("connect-history-api-fallback");
-const { type } = require("os");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
   entry: {
     bundle: path.resolve(__dirname, "frontend/src/index.js"),
+    home: path.resolve(__dirname, "frontend/src/js/home.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/dist/",
     filename: "[name].[contenthash].js",
     clean: true,
-    assetModuleFilename: "[name][ext]",
+    assetModuleFilename: "assets/[name][ext]",
   },
   devtool: "source-map",
   devServer: {
@@ -51,7 +53,17 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Twitter",
       filename: "index.html",
-      template: "frontend/index.html",
+      template: "frontend/src/index.html",
+      chunks: ["bundle"],
+    }),
+    new HtmlWebpackPlugin({
+      title: "Home",
+      filename: "home.html",
+      template: "frontend/src/pages/home.html",
+      chunks: ["home"],
+    }),
+    new CopyWebpackPlugin({
+      patterns: [{ from: "frontend/src/assets", to: "assets" }],
     }),
   ],
 };

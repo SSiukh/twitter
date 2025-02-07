@@ -1,0 +1,356 @@
+@use "../../styles/base/variables.scss" as *;
+
+.home {
+  height: 100%;
+
+  .tweet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8899a64c;
+    &_container {
+      background-color: #000;
+      width: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 600px;
+      border-radius: 20px;
+      padding-bottom: 60px;
+      padding: 15px;
+
+      .tweet-close-button {
+        background-color: transparent;
+        border: none;
+        margin-bottom: 30px;
+        cursor: pointer;
+
+        &_icon {
+          fill: #fff;
+
+          @include setTr(fill);
+
+          &:hover {
+            fill: $blue;
+          }
+        }
+      }
+
+      &_createTweet {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+
+        &_field {
+          width: calc(100% - 52px);
+          height: 150px;
+          resize: none;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          padding: 5px;
+          color: #fff;
+          font-weight: 400;
+          font-size: 19px;
+          border-bottom: 1px solid transparent;
+          @include setTr(border-bottom);
+
+          &:focus {
+            border-bottom: 1px solid $border-color;
+          }
+        }
+
+        &_main {
+          display: flex;
+          width: 100%;
+          gap: 12px;
+          border-bottom: 1px solid $border-color;
+
+          &_icon {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+          }
+        }
+
+        &_button {
+          margin-top: 18px;
+          border-radius: 53px;
+          padding: 10px 31px;
+          border: none;
+          background-color: $blue;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+          cursor: pointer;
+          @include setTr(background-color);
+
+          &:hover {
+            background-color: $blue-hov;
+          }
+        }
+      }
+    }
+  }
+
+  .edit {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8899a64c;
+    &_container {
+      background-color: #000;
+      width: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 600px;
+      border-radius: 20px;
+      padding-bottom: 60px;
+      padding: 15px;
+
+      .edit-close-button {
+        background-color: transparent;
+        border: none;
+        margin-bottom: 30px;
+        cursor: pointer;
+
+        &_icon {
+          fill: #fff;
+
+          @include setTr(fill);
+
+          &:hover {
+            fill: $blue;
+          }
+        }
+      }
+
+      &_createTweet {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+
+        &_field {
+          width: calc(100% - 52px);
+          height: 150px;
+          resize: none;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          padding: 5px;
+          color: #fff;
+          font-weight: 400;
+          font-size: 19px;
+          border-bottom: 1px solid transparent;
+          @include setTr(border-bottom);
+
+          &:focus {
+            border-bottom: 1px solid $border-color;
+          }
+        }
+
+        &_main {
+          display: flex;
+          width: 100%;
+          gap: 12px;
+          border-bottom: 1px solid $border-color;
+
+          &_icon {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+          }
+        }
+
+        &_button {
+          margin-top: 18px;
+          border-radius: 53px;
+          padding: 10px 31px;
+          border: none;
+          background-color: $blue;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+          cursor: pointer;
+          @include setTr(background-color);
+
+          &:hover {
+            background-color: $blue-hov;
+          }
+        }
+      }
+    }
+  }
+
+  &_header {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    padding: 14px;
+    padding-right: 50px;
+    border-right: 1px solid $border-color;
+
+    &_main {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &_logo {
+        padding: 10px;
+        &_icon {
+          fill: #fff;
+        }
+      }
+
+      &_nav {
+        &_list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          &_item {
+            &_link {
+              border-radius: 53px;
+              padding: 10px 30px 10px 10px;
+              color: #fff;
+              width: fit-content;
+              display: flex;
+              align-items: center;
+              font-weight: 700;
+              font-size: 19px;
+              @include setTr(background-color);
+
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+              }
+
+              &_icon {
+                margin-right: 20px;
+                fill: #fff;
+              }
+            }
+          }
+        }
+      }
+      &_button {
+        width: 210px;
+        background-color: $blue;
+        border-radius: 53px;
+        padding: 15px 0;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 15px;
+        color: #fff;
+        cursor: pointer;
+        @include setTr(background-color);
+
+        &:hover {
+          background-color: $blue-hov;
+        }
+      }
+    }
+    &_profile {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 40px;
+      @include setTr(background-color);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &_main {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        &_icon {
+          border-radius: 40px;
+          width: 40px;
+          height: 40px;
+        }
+        &_username {
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+        }
+      }
+
+      &_button {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &_icon {
+          fill: #fff;
+        }
+      }
+
+      .profile {
+        position: absolute;
+        top: -100%;
+        left: -25%;
+        background-color: #000;
+        border-radius: 14px;
+        box-shadow: 0 0 10px #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+
+        &_button {
+          padding: 15px;
+          display: flex;
+          justify-content: center;
+          background-color: transparent;
+          border: none;
+          width: 100%;
+          font-weight: 400;
+          font-size: 16px;
+          color: #fff;
+        }
+
+        &_triangle {
+          transform: rotate(45deg);
+          background-color: #000;
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          z-index: 2;
+          bottom: -3px;
+        }
+      }
+    }
+  }
+}

@@ -1,4 +1,21 @@
-body {
-  background-color: #222222;
-  color: #ffffff;
+@use "./base/reset.scss";
+
+@use "../components/header/header.scss";
+@use "../components/tweets/tweets.scss";
+@use "../components/pageTitle/pageTitle.scss";
+@use "../components/recomendation/recomendation.scss";
+@use "../components/createTweet/createTweet.scss";
+@use "../components/auth/auth.scss";
+@use "../components/user/user.scss";
+
+.home {
+  display: flex;
+  width: 100%;
+
+  &_main {
+    width: calc(100% - 210px);
+    display: flex;
+  }
 }
+
+// після розробки використати miniCssExtractPlugin

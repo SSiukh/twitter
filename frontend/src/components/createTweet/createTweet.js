@@ -1,7 +1,7 @@
 import { Notyf } from "notyf";
 import Tweet from "../../classes/Tweet";
 import ApiService from "../../services/ApiService";
-import Modal from "../../classes/Modal";
+import EditTweet from "../../classes/EditTweet";
 
 const notyfTweet = new Notyf();
 
@@ -15,6 +15,7 @@ const handleTweet = async (tweetData) => {
         message: response.message,
         position: { x: "right", y: "top" },
       });
+      return;
     }
 
     notyfTweet.success({
@@ -35,3 +36,6 @@ new Tweet(".home_main_page_createTweet", (tweetData) => {
 new Tweet(".tweet_container_createTweet", (tweetData) => {
   handleTweet(tweetData);
 });
+
+const editTweet = new EditTweet(".edit", ".home_main_page_tweets_list");
+editTweet.init();

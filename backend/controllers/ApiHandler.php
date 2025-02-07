@@ -40,8 +40,16 @@ class ApiHandler
                 $this->getData("users");
             } elseif ($urlPath === "/backend/getuser") {
                 $this->getUser($id);
+            } elseif ($urlPath === "/backend/get_all_users") {
+                $this->getAllUsers();
             } else {
                 $this->respond(404, ["result" => false, "message" => "get endpoint not found"]);
+            }
+        } elseif ($_SERVER["REQUEST_METHOD"] === "PUT") {
+            if ($route === "/backend/edittweet") {
+                $this->editTweet();
+            } elseif ($route === "/backend/editusername") {
+                $this->editUsername();
             }
         } else {
             $this->respond(405, ["result" => false, "message" => "method not allowed"]);
@@ -152,12 +160,25 @@ class ApiHandler
         }
     }
 
+    private function getAllUsers()
+    {
+        try {
+            $data = $this->db->select(
+                'SELECT id, username FROM users'
+            );
+
+            $this->respond(200, ["result" => true, "data" => $data]);
+        } catch (Exception $e) {
+            $this->respond(500, ["result" => false, "message" => "Something went wrong. Please try again later"]);
+        }
+    }
+
     private function getData($value, $id = null)
     {
         switch ($value) {
             case "tweets":
                 $this->getCountQuery = "SELECT COUNT(*) FROM tweets";
-                $this->getQuery = "SELECT tweets.user_id, tweets.content, tweets.created_at, users.username FROM tweets
+                $this->getQuery = "SELECT tweets.id, tweets.user_id, tweets.content, tweets.created_at, tweets.updated_at, users.username FROM tweets
                                     JOIN users ON tweets.user_id = users.id";
                 if ($id) {
                     $this->getCountQuery .= " WHERE user_id = :id";
@@ -190,6 +211,58 @@ class ApiHandler
             $data = $this->db->select($this->getQuery, $params);
 
             $this->respond(200, ["result" => true, "data" => $data, "meta" => ["per_page" => $perPage, "page" => $page, "total" => $total, "total_pages" => $totalPages]]);
+        } catch (Exception $e) {
+            $this->respond(500, ["result" => false, "message" => "Something went wrong. Please try again later"]);
+        }
+    }
+
+    private function editTweet()
+    {
+        try {
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            if (!(isset($data["id"]) && isset($data["text"]))) {
+                $this->respond(400, ["result" => false, "message" => "Some field is missing"]);
+            }
+
+            $this->db->update(
+                "UPDATE tweets SET content = :content
+                WHERE id = :id",
+                ["content" => $data["text"], "id" => $data["id"]]
+            );
+
+            $this->respond(200, ["result" => true, "message" => "Successfully!"]);
+        } catch (Exception $e) {
+            $this->respond(500, ["result" => false, "message" => "Something went wrong. Please try again later"]);
+        }
+    }
+
+    private function editUsername()
+    {
+        try {
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            if (!(isset($data["id"]) && isset($data["value"]))) {
+                $this->respond(400, ["result" => false, "message" => "Some field is missing"]);
+            }
+
+            $checkUsername = $this->db->selectOne(
+                "SELECT * FROM users
+                WHERE username = :username",
+                ["username" => $data["value"]]
+            );
+
+            if ($checkUsername) {
+                $this->respond(400, ["result" => false, "message" => "Username already exists"]);
+            }
+
+            $this->db->update(
+                "UPDATE users SET username = :username
+                WHERE id = :id",
+                ["username" => $data["value"], "id" => $data["id"]]
+            );
+
+            $this->respond(200, ["result" => true, "message" => "Successfully!", "check" => $checkUsername]);
         } catch (Exception $e) {
             $this->respond(500, ["result" => false, "message" => "Something went wrong. Please try again later"]);
         }

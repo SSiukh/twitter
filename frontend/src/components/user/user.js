@@ -1,11 +1,14 @@
 import Render from "../../classes/Render";
 import ApiService from "../../services/ApiService";
+import EditTweet from "../../classes/EditTweet";
+import Modal from "../../classes/Modal";
 
 const list = document.querySelector(".home_main_side_profiles_list");
 const homePage = document.querySelector(".home_main_page");
 const getUserApi = new ApiService();
 
-const render = ({ username, email, created_at }) => {
+const render = ({ username, email, created_at }, id) => {
+  const userId = sessionStorage.getItem("id");
   const markup = `<div class="profile">
         <div class="profile_header">
             <button class="profile_header_button">
@@ -28,7 +31,12 @@ const render = ({ username, email, created_at }) => {
                         <p class="profile_scroll_main_info_block_email">${email}</p>
                     </div>
                 </div>
-                <button class="profile_scroll_main_follow">Follow</button>
+                ${
+                  userId === id
+                    ? '<button class="profile_scroll_main_follow">Edit username</button>'
+                    : ""
+                }
+                
             </div>
             <div class="profile_scroll_info">
                 <p class="profile_scroll_info_posts-qty"></p>
@@ -53,10 +61,16 @@ const checkUrl = async () => {
 
   try {
     const response = await getUserApi.getUser(id);
-    render(response.data);
+    render(response.data, id);
   } catch (error) {
     return;
   }
+
+  const editUserTweet = new EditTweet(".edit", ".profile_scroll_posts");
+  editUserTweet.init();
+
+  const editUsername = document.querySelector(".profile_scroll_main_follow");
+  new Modal(".editUsername", editUsername);
 
   const backButton = document.querySelector(".profile_header_button");
 
@@ -75,9 +89,11 @@ const checkUrl = async () => {
 
   const userTweetsRend = new Render(renderUsersTweetsData);
   const totalTweets = await userTweetsRend.init();
+
   document.querySelector(
     ".profile_scroll_info_posts-qty"
   ).textContent = `${totalTweets} posts`;
+
   document.querySelector(
     ".profile_header_info_posts-qty"
   ).textContent = `${totalTweets} posts`;

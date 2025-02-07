@@ -25,28 +25,41 @@ export default class Render {
   #template(item) {
     switch (this.#type) {
       case "tweets":
-        return `<li class="tweets">
-            <a href="/home/${item.user_id}" class="tweets_img">
-                <img src="${img}" alt="user photo"/>
-            </a>
-            <div class="tweets_main">
-                <div class="tweets_main_info">
-                    <p class="tweets_main_info_username">${item.username}</p>
-                    <p class="tweets_main_info_date">${item.created_at}</p>
-                </div>
-                <p class="tweets_main_text">${item.content}</p>
+        return `<li data-id="${item.id}" class="tweets">
+            <div class="tweets_block">
+              <a href="/home/${item.user_id}" class="tweets_block_img">
+                <img class="tweets_block_img_src" src="${img}" alt="user photo"/>
+              </a>
+              <div class="tweets_block_main">
+                  <div class="tweets_block_main_info">
+                      <p class="tweets_block_main_info_username">${
+                        item.username
+                      }</p>
+                      <p class="tweets_block_main_info_date">${
+                        item.created_at
+                      }</p>
+                  </div>
+                  <p class="tweets_block_main_text">${item.content}</p>
+
+                  ${
+                    item.created_at !== item.updated_at
+                      ? `<p class="tweets_block_main_updated">Updated at ${item.updated_at}</p>`
+                      : ""
+                  }
+              </div>
             </div>
-            ${
-              item.user_id === +sessionStorage.getItem("id")
-                ? `
-          <button class="tweets_button">
-          <svg width="20" height="20" class="tweets_button_icon">
-                <use href="../assets/icons.svg#edit"></use>
-                  </svg>
-          </button>
-                `
-                : ""
-            }
+            
+                ${
+                  item.user_id === +sessionStorage.getItem("id")
+                    ? `
+              <button class="tweets_button">
+              <svg width="20" height="20" class="tweets_button_icon">
+                    <use href="../assets/icons.svg#edit"></use>
+              </svg>
+              </button>
+                    `
+                    : ""
+                }
         </li>`;
       case "users":
         return `<li data-id="${item.id}" class="users">
@@ -58,11 +71,9 @@ export default class Render {
                     </div>
                 </div>
                 <button class="users_follow">
-                    Follow
+                    View
                 </button>
             </li>`;
-      case "hashtags":
-        return "...";
       default:
         return "incorrect type";
     }
@@ -70,7 +81,6 @@ export default class Render {
 
   #render(data) {
     const id = sessionStorage.getItem("id");
-
     const html =
       this.#type === "users"
         ? data

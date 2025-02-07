@@ -46,6 +46,14 @@ const validationSchemas = {
       .required("Confirm password is required field")
       .oneOf([Yup.ref("password")], "Password must match"),
   }),
+
+  username: Yup.object().shape({
+    username: Yup.string()
+      .min(3, "Username must be at least 3 symbols")
+      .max(50, "Username must be less than 50 symbols")
+      .matches(usernameRegex, "Username can have only letters and numbers")
+      .required("Username is required field"),
+  }),
 };
 
 export default validationSchemas;

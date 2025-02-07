@@ -6,51 +6,23 @@
     display: flex;
     width: 100%;
     border-bottom: 1px solid $border-color;
+    padding: 0 15px;
+    justify-content: space-between;
+    align-items: center;
 
-    &_button {
-      width: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      @include setTr(background-color);
+    &_text {
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      padding: 16px 0;
+      display: block;
+      width: fit-content;
+      position: relative;
+      overflow: hidden;
+    }
 
-      &:hover,
-      &:focus {
-        background-color: $back-hov;
-      }
-
-      &_text {
-        font-weight: 700;
-        font-size: 15px;
-        color: #fff;
-        padding: 16px 0;
-        display: block;
-        width: fit-content;
-        position: relative;
-        overflow: hidden;
-
-        &::after {
-          transform: translateX(-100%);
-          content: "";
-          width: 100%;
-          position: absolute;
-          height: 4px;
-          background-color: $blue;
-          bottom: 0;
-          left: 0;
-          border-radius: 2px;
-          @include setTr(transform);
-        }
-
-        &:hover::after,
-        &:focus::after,
-        &:active::after {
-          transform: translateX(0);
-        }
-      }
+    &_icon {
+      fill: $blue;
     }
   }
 }

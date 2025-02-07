@@ -11,49 +11,74 @@
   gap: 23px;
 
   &_search {
-    padding: 11px;
-    background-color: $backround-color;
-    border-radius: 40px;
-    display: flex;
-    align-items: center;
-    gap: 11px;
+    position: relative;
+    &_field {
+      padding: 11px;
+      background-color: $backround-color;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
 
-    &_icon {
-      fill: gray;
-    }
-    &_input {
-      font-weight: 400;
-      font-size: 15px;
-      color: #fff;
-      outline: none;
-      border: 1px solid transparent;
-      background-color: transparent;
-      width: 100%;
+      &_icon {
+        fill: gray;
+      }
+      &_input {
+        font-weight: 400;
+        font-size: 15px;
+        color: #fff;
+        outline: none;
+        border: 1px solid transparent;
+        background-color: transparent;
+        width: 100%;
 
-      &::placeholder {
-        color: $gray;
+        &::placeholder {
+          color: $gray;
+        }
       }
     }
-  }
 
-  &_tags {
-    width: 100%;
-    border-radius: 14px;
-    background-color: $backround-color;
-    display: flex;
-    flex-direction: column;
-    padding: 15px;
-    gap: 15px;
-    &_title {
-      font-weight: 700;
-      font-size: 19px;
-      color: $gray;
-    }
-    &_list {
-      display: flex;
-      flex-direction: column;
+    &_results {
+      position: absolute;
+      top: 65px;
+      background-color: #000;
+      border-radius: 15px;
       width: 100%;
-      gap: 3px;
+      border: 1px solid $border-color;
+      box-shadow: 0 0 15px $gray;
+      overflow: hidden;
+
+      &_item {
+        padding: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $back-hov;
+        }
+
+        &_img {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+        }
+        &_username {
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+        }
+      }
+
+      &_mes {
+        display: block;
+        text-align: center;
+        padding: 20px 0;
+        color: $gray;
+        font-size: 15px;
+        font-weight: 400;
+      }
     }
   }
 

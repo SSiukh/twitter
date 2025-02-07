@@ -12,7 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="../assets/user.PNG" />
+    <link rel="icon" href="../assets/logo.png" />
   </head>
   <body>
     <div class="container">
@@ -86,17 +86,13 @@
           </div>
         </header>
         <main class="home_main">
-          <h1 class="visually-hidden">tweets</h1>
+          <h1 class="visually-hidden">Homepage</h1>
           <div class="home_main_page">
             <div class="home_main_page_title">
-              <button class="home_main_page_title_button">
-                <span class="home_main_page_title_button_text">For you</span>
-              </button>
-              <button class="home_main_page_title_button">
-                <span class="home_main_page_title_button_text">
-                  Subscription
-                </span>
-              </button>
+              <p class="home_main_page_title_text">Homepage</p>
+              <svg width="35" height="35" class="home_main_page_title_icon">
+                <use href="../assets/icons.svg#title"></use>
+              </svg>
             </div>
             <div class="home_main_page_scroll">
               <div class="home_main_page_createTweet">
@@ -122,22 +118,28 @@
           </div>
           <div class="home_main_side">
             <div class="home_main_side_search">
-              <svg width="16" height="16" class="home_main_side_search_icon">
-                <use href="../assets/icons.svg#search"></use>
-              </svg>
-              <input
-                name="search"
-                type="text"
-                class="home_main_side_search_input"
-                placeholder="Keyword or hashtag"
-              />
+              <div class="home_main_side_search_field">
+                <svg
+                  width="16"
+                  height="16"
+                  class="home_main_side_search_field_icon"
+                >
+                  <use href="../assets/icons.svg#search"></use>
+                </svg>
+                <input
+                  name="search"
+                  type="text"
+                  class="home_main_side_search_field_input"
+                  placeholder="Username ..."
+                />
+              </div>
+              <ul class="home_main_side_search_results visually-hidden">
+                <span class="home_main_side_search_results_mes">
+                  Search the users ...
+                </span>
+              </ul>
             </div>
 
-            <!--overflow auto -->
-            <div class="home_main_side_tags">
-              <h2 class="home_main_side_tags_title"># Popular tags</h2>
-              <ul class="home_main_side_tags_list"></ul>
-            </div>
             <div class="home_main_side_profiles">
               <h2 class="home_main_side_profiles_title">
                 # Recomended profiles
@@ -176,19 +178,40 @@
                 <use href="../assets/icons.svg#quit"></use>
               </svg>
             </button>
-            <div class="edit_container_createTweet">
-              <div class="edit_container_createTweet_main">
+            <div class="edit_container_editTweet">
+              <div class="edit_container_editTweet_main">
                 <img
                   src="../assets/user.PNG"
-                  class="edit_container_createTweet_main_icon"
+                  class="edit_container_editTweet_main_icon"
                 />
                 <textarea
-                  class="edit_container_createTweet_field"
+                  class="edit-text-field"
                   name="createTweet"
                   placeholder="What happens?!"
                 ></textarea>
               </div>
-              <button class="edit_container_createTweet_button">Edit</button>
+              <button class="edit-update-button">Update</button>
+            </div>
+          </div>
+        </div>
+        <div class="editUsername visually-hidden">
+          <div class="editUsername_container">
+            <button class="editUsername-close-button">
+              <svg
+                class="editUsername-close-button_icon"
+                width="16"
+                height="16"
+              >
+                <use href="../assets/icons.svg#quit"></use>
+              </svg>
+            </button>
+            <div class="editUsername_container_main">
+              <input
+                class="editUsername-text-field"
+                name="editUsername"
+                placeholder="New username"
+              ></input>
+              <button class="editUsername-update-button">Update</button>
             </div>
           </div>
         </div>

@@ -60,4 +60,11 @@ class Database
         $stmt->execute($params);
         return $this->pdo->lastInsertId();
     }
+
+    public function update($query, $params = [])
+    {
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute($params);
+        return $stmt->rowCount();
+    }
 }

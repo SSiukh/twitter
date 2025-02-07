@@ -205,29 +205,6 @@
           }
         }
 
-        &_forgot {
-          width: 100%;
-          background-color: transparent;
-          color: #fff;
-          padding: 10px 0;
-          border-radius: 20px;
-          outline: none;
-          border: 1px solid #fff;
-          @include setTr(background-color);
-          font-weight: 700;
-          font-size: 15px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          margin-bottom: 40px;
-
-          &:hover,
-          &:active {
-            background-color: #ffffff2a;
-          }
-        }
-
         &_signup {
           color: #fff;
           .login-transit-button {

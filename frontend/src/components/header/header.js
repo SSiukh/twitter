@@ -1,6 +1,4 @@
 import Modal from "../../classes/Modal";
-import validationSchemas from "../../services/validation";
-import ApiService from "../../services/ApiService";
 
 const createTweetButton = document.querySelector(".home_header_main_button");
 const profileButton = document.querySelector(".home_header_profile");

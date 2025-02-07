@@ -52,7 +52,7 @@ export default class ApiService {
     if (!data.id || !data.text) {
       return {
         result: false,
-        message: "User ID or tweet content is missing",
+        message: "Tweet content is missing",
       };
     }
 
@@ -131,6 +131,57 @@ export default class ApiService {
           id,
         },
       });
+
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return error.response.data;
+      } else {
+        return {
+          result: false,
+          message: "Network error or no response from server",
+        };
+      }
+    }
+  }
+
+  async editTweet(id, text) {
+    try {
+      const response = await axios.put("/edittweet", { id, text });
+
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return error.response.data;
+      } else {
+        return {
+          result: false,
+          message: "Network error or no response from server",
+        };
+      }
+    }
+  }
+
+  async getAllUsers() {
+    try {
+      const response = await axios.get("/get_all_users");
+
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        return error.response.data;
+      } else {
+        return {
+          result: false,
+          message: "Network error or no response from server",
+        };
+      }
+    }
+  }
+
+  async editUsername(id, value) {
+    try {
+      const response = await axios.put("/editusername", { id, value });
 
       return response.data;
     } catch (error) {

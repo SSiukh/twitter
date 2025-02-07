@@ -141,13 +141,13 @@
         }
       }
 
-      &_createTweet {
+      &_editTweet {
         display: flex;
         flex-direction: column;
         align-items: flex-end;
         width: 100%;
 
-        &_field {
+        .edit-text-field {
           width: calc(100% - 52px);
           height: 150px;
           resize: none;
@@ -180,7 +180,7 @@
           }
         }
 
-        &_button {
+        .edit-update-button {
           margin-top: 18px;
           border-radius: 53px;
           padding: 10px 31px;

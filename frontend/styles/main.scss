@@ -1,0 +1,12 @@
+@use "./base/reset.scss";
+
+@use "../components/header/header.scss";
+@use "../components/tweets/tweets.scss";
+@use "../components/pageTitle/pageTitle.scss";
+@use "../components/recomendation/recomendation.scss";
+@use "../components/createTweet/createTweet.scss";
+@use "../components/auth/auth.scss";
+@use "../components/user/user.scss";
+@use "../components/user/editUser.scss";
+
+// після розробки використати miniCssExtractPlugin

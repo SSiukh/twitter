@@ -1,0 +1,78 @@
+@use "../../styles/base/variables.scss" as *;
+
+.home_main_page {
+  width: 100%;
+  max-width: 600px;
+
+  &_title {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid $border-color;
+    padding: 16px 15px;
+    justify-content: space-between;
+    align-items: center;
+
+    &_text {
+      display: none;
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+      padding: 16px 0;
+      width: fit-content;
+      position: relative;
+      overflow: hidden;
+    }
+
+    &_icon {
+      display: none;
+      fill: $blue;
+    }
+
+    &_burger {
+      fill: #fff;
+    }
+
+    &_search {
+      fill: #fff;
+    }
+  }
+}
+
+@media screen and (min-width: 632px) {
+  .home_main_page {
+    min-width: 600px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home_main_page {
+    &_title {
+      padding: 0 15px;
+      &_text {
+        display: block;
+      }
+      &_burger {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1122px) {
+  .home_main_page {
+    &_title {
+      &_search {
+        display: none;
+      }
+      &_icon {
+        display: block;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1252px) {
+  .home_main_page {
+    min-width: 600px;
+  }
+}

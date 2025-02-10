@@ -1,17 +1,17 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const historyApiFallback = require("connect-history-api-fallback");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
   entry: {
-    bundle: path.resolve(__dirname, "frontend/src/index.js"),
-    home: path.resolve(__dirname, "frontend/src/js/home.js"),
+    bundle: path.resolve(__dirname, "frontend/index.js"),
+    home: path.resolve(__dirname, "frontend/js/home.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    publicPath: "/dist/",
+    publicPath: "/",
     filename: "[name].[contenthash].js",
     clean: true,
     assetModuleFilename: "assets/[name][ext]",
@@ -30,8 +30,12 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
         test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
         test: /\.js$/,
@@ -53,17 +57,20 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Twitter",
       filename: "index.html",
-      template: "frontend/src/index.html",
+      template: "frontend/index.html",
       chunks: ["bundle"],
     }),
     new HtmlWebpackPlugin({
       title: "Home",
       filename: "home.html",
-      template: "frontend/src/pages/home.html",
+      template: "frontend/pages/home.html",
       chunks: ["home"],
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: "frontend/src/assets", to: "assets" }],
+      patterns: [{ from: "frontend/assets", to: "assets" }],
+    }),
+    new MiniCssExtractPlugin({
+      filename: "styles.css",
     }),
   ],
 };

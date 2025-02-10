@@ -1,0 +1,540 @@
+@use "../../styles/base/variables.scss" as *;
+
+.home {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+
+  &_main {
+    display: flex;
+
+    &_page {
+      border-right: 1px solid $border-color;
+      border-left: 1px solid $border-color;
+    }
+  }
+
+  .tweet {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8899a64c;
+    padding: 0 15px;
+
+    &_container {
+      background-color: #000;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 600px;
+      border-radius: 20px;
+      padding-bottom: 60px;
+      padding: 15px;
+
+      .tweet-close-button {
+        background-color: transparent;
+        border: none;
+        margin-bottom: 30px;
+        cursor: pointer;
+
+        &_icon {
+          fill: #fff;
+
+          @include setTr(fill);
+
+          &:hover {
+            fill: $blue;
+          }
+        }
+      }
+
+      &_createTweet {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+
+        &_field {
+          width: calc(100% - 52px);
+          height: 150px;
+          resize: none;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          padding: 5px;
+          color: #fff;
+          font-weight: 400;
+          font-size: 19px;
+          border-bottom: 1px solid transparent;
+          @include setTr(border-bottom);
+
+          &:focus {
+            border-bottom: 1px solid $border-color;
+          }
+        }
+
+        &_main {
+          display: flex;
+          width: 100%;
+          gap: 12px;
+          border-bottom: 1px solid $border-color;
+
+          &_icon {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+          }
+        }
+
+        &_button {
+          margin-top: 18px;
+          border-radius: 53px;
+          padding: 10px 31px;
+          border: none;
+          background-color: $blue;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+          cursor: pointer;
+          @include setTr(background-color);
+
+          &:hover {
+            background-color: $blue-hov;
+          }
+        }
+      }
+    }
+  }
+
+  .edit {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8899a64c;
+    padding: 0 15px;
+
+    &_container {
+      background-color: #000;
+      width: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      padding-bottom: 60px;
+      padding: 15px;
+
+      .edit-close-button {
+        background-color: transparent;
+        border: none;
+        margin-bottom: 30px;
+        cursor: pointer;
+
+        &_icon {
+          fill: #fff;
+
+          @include setTr(fill);
+
+          &:hover {
+            fill: $blue;
+          }
+        }
+      }
+
+      &_editTweet {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+
+        .edit-text-field {
+          width: calc(100% - 52px);
+          height: 150px;
+          resize: none;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          padding: 5px;
+          color: #fff;
+          font-weight: 400;
+          font-size: 19px;
+          border-bottom: 1px solid transparent;
+          @include setTr(border-bottom);
+
+          &:focus {
+            border-bottom: 1px solid $border-color;
+          }
+        }
+
+        &_main {
+          display: flex;
+          width: 100%;
+          gap: 12px;
+          border-bottom: 1px solid $border-color;
+
+          &_icon {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+          }
+        }
+
+        .edit-update-button {
+          margin-top: 18px;
+          border-radius: 53px;
+          padding: 10px 31px;
+          border: none;
+          background-color: $blue;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+          cursor: pointer;
+          @include setTr(background-color);
+
+          &:hover {
+            background-color: $blue-hov;
+          }
+        }
+      }
+    }
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: flex-start;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: $back-hov;
+    width: 100%;
+    height: 100%;
+  }
+
+  &_header {
+    display: flex;
+    position: absolute;
+    background-color: #000;
+    left: 0;
+    top: 0;
+    flex-direction: column;
+    height: 100%;
+    width: fit-content;
+    min-width: 80px;
+    justify-content: space-between;
+    padding: 14px 30px;
+
+    &_main {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .modal-header-close-button {
+        background-color: transparent;
+        border: none;
+        width: fit-content;
+        cursor: pointer;
+        margin-left: auto;
+
+        &-icon {
+          fill: #fff;
+          @include setTr(fill);
+
+          &:hover,
+          &:focus {
+            fill: $blue;
+          }
+        }
+      }
+
+      &_logo {
+        padding: 10px;
+        &_icon {
+          fill: #fff;
+        }
+      }
+
+      &_nav {
+        &_list {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          &_item {
+            &_link {
+              border-radius: 53px;
+              padding: 10px 30px 10px 10px;
+              width: fit-content;
+              display: flex;
+              align-items: center;
+
+              @include setTr(background-color);
+
+              &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+              }
+
+              &_icon {
+                margin-right: 20px;
+                fill: #fff;
+              }
+
+              &_text {
+                font-weight: 700;
+                font-size: 19px;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+
+      &_button {
+        width: 100%;
+        max-width: 210px;
+        background-color: $blue;
+        border-radius: 53px;
+        padding: 15px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        cursor: pointer;
+        @include setTr(background-color);
+
+        &:hover {
+          background-color: $blue-hov;
+        }
+
+        &_icon {
+          display: none;
+          fill: #fff;
+        }
+
+        &_text {
+          display: flex;
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+        }
+      }
+    }
+    &_profile {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      cursor: pointer;
+      border-radius: 40px;
+      @include setTr(background-color);
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &_main {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        &_icon {
+          border-radius: 40px;
+          width: 40px;
+          height: 40px;
+        }
+        &_username {
+          font-weight: 700;
+          font-size: 15px;
+          color: #fff;
+        }
+      }
+
+      &_button {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &_icon {
+          fill: #fff;
+        }
+      }
+
+      .profile {
+        position: absolute;
+        top: -100%;
+        left: 0;
+        background-color: #000;
+        border-radius: 14px;
+        box-shadow: 0 0 10px #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+
+        &_button {
+          padding: 15px;
+          display: flex;
+          justify-content: center;
+          background-color: transparent;
+          border: none;
+          width: 100%;
+          font-weight: 400;
+          font-size: 16px;
+          color: #fff;
+        }
+
+        &_triangle {
+          transform: rotate(45deg);
+          background-color: #000;
+          position: absolute;
+          width: 7px;
+          height: 7px;
+          z-index: 2;
+          bottom: -3px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 632px) {
+  .home {
+    &_main {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .home {
+    .modal-header {
+      position: static;
+      width: fit-content;
+    }
+
+    &_header {
+      position: static;
+      display: flex;
+      padding: 14px 8px;
+
+      &_main {
+        .modal-header-close-button {
+          display: none;
+        }
+        &_nav {
+          &_list {
+            &_item {
+              &_link {
+                padding: 10px;
+                &_text {
+                  display: none;
+                }
+
+                &_icon {
+                  margin: 0;
+                }
+              }
+            }
+          }
+        }
+
+        &_button {
+          width: fit-content;
+          &_icon {
+            display: block;
+          }
+          &_text {
+            display: none;
+          }
+        }
+      }
+
+      &_profile {
+        &_main {
+          &_username {
+            display: none;
+          }
+        }
+
+        &_button {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1252px) {
+  .home {
+    &_header {
+      padding: 14px 50px 14px 14px;
+
+      &_main {
+        &_button {
+          width: 100%;
+        }
+        &_nav {
+          &_list {
+            &_item {
+              &_link {
+                padding: 10px 30px 10px 10px;
+                &_text {
+                  display: block;
+                }
+
+                &_icon {
+                  margin-right: 20px;
+                }
+              }
+            }
+          }
+        }
+
+        &_button {
+          &_icon {
+            display: none;
+          }
+          &_text {
+            display: flex;
+          }
+        }
+      }
+
+      &_profile {
+        &_main {
+          &_username {
+            display: flex;
+          }
+        }
+
+        &_button {
+          display: flex;
+        }
+      }
+    }
+  }
+}
